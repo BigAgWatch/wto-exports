@@ -1,0 +1,339 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-bottom: 20px;
+            }
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: #000;
+                shape-rendering: crispEdges;
+            }
+            .y.axis path {
+                display: none;
+            }
+
+            .x.axis path {
+                display: none;
+            }
+            .spacer {
+                margin-top: 40px;
+            }
+            img:hover {background-color: lightblue; cursor: pointer;}
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+        <script src="./js/datamaps.world.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+          <h1>Midwest Center for Investigative Reporting</h1>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div id="mapbox"></div>
+            </div>
+        </div>
+        <!-- Icons -->
+        <div class="row spacer">
+            <div class="col-xs-2 col-sm-2 col-md-1 col-md-offset-0 col-lg-1 col-lg-offset-0">
+                <img src="./img/beef.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/corn.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/dairy.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/eggs.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/pork.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/poultry.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/rice.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/soy.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/sugar.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/tobacco.png" style="width: 60%; margin: 10px 0;">
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img src="./img/wheat.png" style="width: 60%; margin: 10px 0;">
+            </div>
+        </div>
+
+        <div class="row spacer">
+            <h2 style="text-align: center;">Beef</h2>
+        </div>
+
+        <!-- Small multiple graphs -->
+        <div class="row spacer">
+            <div id="graph-1" class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-1 col-md-offset-2 col-md-2 col-lg-2 col-lg-offset-2"></div>
+            <div id="graph-2" class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-0 col-md-offset-1 col-md-2 col-lg-2 col-lg-offset-1"></div>
+            <div id="graph-3" class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-0 col-md-offset-1 col-md-2 col-lg-2 col-lg-offset-1"></div>
+            <div id="graph-4" class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1 col-md-offset-2 col-md-2 col-lg-2 col-lg-offset-2"></div>
+            <div id="graph-5" class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-0 col-md-offset-1 col-md-2 col-lg-2 col-lg-offset-1"></div>
+            <div id="graph-6" class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-0 col-md-offset-1 col-md-2 col-lg-2 col-lg-offset-1"></div>
+            <div id="graph-7" class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-1 col-md-offset-2 col-md-2 col-lg-2 col-lg-offset-2"></div>
+            <div id="graph-8" class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-0 col-md-offset-1 col-md-2 col-lg-2 col-lg-offset-1"></div>
+            <div id="graph-9" class="col-xs-5 col-xs-offset-2 col-sm-3 col-sm-offset-0 col-md-offset-1 col-md-2 col-lg-2 col-lg-offset-1"></div>
+            <div id="graph-10" class="col-xs-5 col-xs-offset-0 col-sm-3 col-sm-offset-1 col-md-offset-2 col-md-2 col-lg-2 col-lg-offset-2"></div>
+        </div>
+
+        <!-- Stuff -->
+        <div class="row spacer">
+            Source: U.S. Department of Agriculture's Foreign Agricultural Service and the World Trade Organization
+        </div>
+
+      <hr>
+
+      <footer>
+        <p>Graphics & Design by Acton H. Gorton</p>
+        <p>&copy; 2015, <a href="http://www.investigatemidwest.org">Midwest Center for Investigative Reporting</a></p>
+      </footer>
+    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+
+        <!-- d3 -->
+        <script>
+            var data; // a global
+            var largest;
+            var lines;
+            var svgContainer;
+            var margin = {top: 40, right: 40, bottom: 40, left: 50};
+            var width = 150;
+            var height = 150;
+
+            var mindate = new Date(2009,0,1);
+            var maxdate = new Date(2015,4,31);
+
+            var x
+            var xAxis
+
+            var y
+            var yAxis
+
+            // load json and assign to global
+            d3.json("./data.json", function(error, json) {
+                if (error) return console.warn(error);
+                data = json;
+
+                // convert to integers and find largest number
+                largest = 0;
+                for (i in data[0]){
+                    if (i != 0){
+                        var cc = 1;
+                        while (cc < data[0][1].length){
+                            data[0][i][cc] = parseInt(data[0][i][cc].replace(/,/g, ''));
+                            if (data[0][i][cc] > largest){
+                                largest = data[0][i][cc];
+                                console.log(largest)
+                            }
+                            cc ++
+                        }
+                    }
+                }
+
+                var x = d3.time.scale().domain([mindate, maxdate]).range([0, 120]);
+                var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
+
+                var y = d3.scale.linear().domain([(largest / 1000000000), 0]).range([0, 120]);
+                var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5);
+
+                // testing graph builder
+                var counter = 1;
+                var i = 1;
+                while (i < data[0].length) {
+
+                    // create lines
+                    lines = [
+                        { "x": 20,  "y": get_value(data[0][i][1]) },
+                        { "x": 40,  "y": get_value(data[0][i][2]) },
+                        { "x": 60,  "y": get_value(data[0][i][3]) },
+                        { "x": 80,  "y": get_value(data[0][i][4]) },
+                        { "x": 100, "y": get_value(data[0][i][5]) },
+                        { "x": 120, "y": get_value(data[0][i][6]) }
+                    ];
+
+                    // select graph div
+                    var svg = d3.select("#graph-" + counter)
+                            .append("svg")
+                                .attr("width", width + margin.left + margin.right)
+                                .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                                .attr("transform", "translate(20,20)");
+
+                            // add graph label
+                            svg.append("text")
+                                .text(data[0][i][0])
+                                .attr("transform", "translate(60, 0)");
+
+                            // x axis positioning
+                            svg.append("g")
+                                    .attr("class", "x axis")
+                                    .attr("transform", "translate(20, 150)")
+                                    .call(xAxis)
+                                .selectAll("text")
+                                    .style("text-anchor", "end")
+                                    .attr("dx", "-.7em")
+                                    .attr("dy", ".1em")
+                                    .attr("transform", "rotate(-60)" );
+
+                            // y axis positioning
+                            svg.append("g")
+                                .attr("class", "y axis")
+                                .attr("transform", "translate(10, 20)")
+                                .call(yAxis);
+
+                            // line
+                            svg.append("path")
+                                .attr("d", lineFunction(lines))
+                                .attr("transform", "translate(-5, -10)")
+                                .attr("stroke", "steelblue")
+                                .attr("stroke-width", 2)
+                                .attr("fill", "none");
+
+                    // advance counter
+                    counter ++;
+                    i ++ ;
+                }
+            });
+
+            // parse number for graph
+            function get_value(xx){
+                var ttt = (xx / largest) * 100;
+                var test = isFinite(ttt);
+                if (test == false){
+                    ttt = 0
+                }
+                return ttt
+            }
+
+            // This is the accessor function we talked about above
+            var lineFunction = d3.svg.line()
+                 .x(function(d) { return d.x * 1.15; })
+                 .y(function(d) { return height - d.y; })
+                 .interpolate("linear");
+
+            // Start the visualization
+            function visualize(select){
+                data[select].forEach(function(d) {
+                    console.log(d)
+                });
+            }
+
+
+            // ##############
+            //      MAP
+            // ##############
+            var map = new Datamap({
+                element: document.getElementById("mapbox"),
+                responsive: true,
+                projection: 'mercator',
+                fills: {
+                    defaultFill: "steelblue",
+                    win: '#0fa0fa'
+                },
+                data: {
+                    'TX': { fillKey: 'win' },
+                    'FL': { fillKey: 'win' },
+                    'NC': { fillKey: 'win' },
+                    'CA': { fillKey: 'win' },
+                    'NY': { fillKey: 'win' },
+                    'CO': { fillKey: 'win' }
+                }
+            });
+
+            map.arc([
+                {
+                    origin: {
+                        latitude: 40.639722,
+                        longitude: -73.778889
+                    },
+                    destination: {
+                        latitude: 37.618889,
+                        longitude: -122.375
+                    }
+                },
+                {
+                    origin: {
+                        latitude: 30.194444,
+                        longitude: -97.67
+                    },
+                    destination: {
+                        latitude: 25.793333,
+                        longitude: -80.290556
+                    },
+                    options: {
+                        strokeWidth: 2,
+                        strokeColor: 'rgba(100, 10, 200, 0.4)',
+                        greatArc: true
+                    }
+                },
+                {
+                    origin: {
+                        latitude: 39.861667,
+                        longitude: -104.673056
+                    },
+                    destination: {
+                        latitude: 35.877778,
+                        longitude: -78.7875
+                    }
+                }
+            ],  {strokeWidth: 1, arcSharpness: 1.4});
+
+            // listen for window resize
+            d3.select(window).on('resize', function() {
+                map.resize();
+            });
+        </script>
+    </body>
+</html>
