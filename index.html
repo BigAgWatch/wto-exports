@@ -32,7 +32,12 @@
             .spacer {
                 margin-top: 40px;
             }
-            img:hover {background-color: lightblue; cursor: pointer;}
+            img:hover {
+                cursor: pointer;
+            }
+            .blue {
+                display: none;
+            }
         </style>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -47,59 +52,71 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-          <h1>Midwest Center for Investigative Reporting</h1>
-      </div>
+    <div class="jumbotron" style="margin-bottom: 0;">
+        <div class="container">
+            <h1>Midwest Center for Investigative Reporting</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+                <div id="mapbox"></div>
+        </div>
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div id="mapbox"></div>
-            </div>
-        </div>
         <!-- Icons -->
         <div class="row spacer">
-            <div class="col-xs-2 col-sm-2 col-md-1 col-md-offset-0 col-lg-1 col-lg-offset-0">
-                <img class="data beef" src="./img/beef.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1">
+                <img class="beef black" src="./img/beef.png" style="width: 60%; margin: 10px 0; display: none;">
+                <img class="beef blue" src="./img/beef_blue.png" style="width: 60%; margin: 10px 0; display: block;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data corn" src="./img/corn.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="corn black" src="./img/corn.png" style="width: 60%; margin: 10px 0;">
+                <img class="corn blue" src="./img/corn_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data dairy" src="./img/dairy.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="dairy black" src="./img/dairy.png" style="width: 60%; margin: 10px 0;">
+                <img class="dairy blue" src="./img/dairy_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data eggs" src="./img/eggs.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="eggs black" src="./img/eggs.png" style="width: 60%; margin: 10px 0;">
+                <img class="eggs blue" src="./img/eggs_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data pork" src="./img/pork.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="pork black" src="./img/pork.png" style="width: 60%; margin: 10px 0;">
+                <img class="pork blue" src="./img/pork_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data poultry" src="./img/poultry.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="poultry black" src="./img/poultry.png" style="width: 60%; margin: 10px 0;">
+                <img class="poultry blue" src="./img/poultry_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data rice" src="./img/rice.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="rice black" src="./img/rice.png" style="width: 60%; margin: 10px 0;">
+                <img class="rice blue" src="./img/rice_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data soy" src="./img/soy.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="soy black" src="./img/soy.png" style="width: 60%; margin: 10px 0;">
+                <img class="soy blue" src="./img/soy_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data sugar" src="./img/sugar.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="sugar black" src="./img/sugar.png" style="width: 60%; margin: 10px 0;">
+                <img class="sugar blue" src="./img/sugar_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data tobacco"src="./img/tobacco.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="tobacco black" src="./img/tobacco.png" style="width: 60%; margin: 10px 0;">
+                <img class="tobacco blue" src="./img/tobacco_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="data wheat" src="./img/wheat.png" style="width: 60%; margin: 10px 0;">
+            <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
+                <img class="wheat black" src="./img/wheat.png" style="width: 60%; margin: 10px 0;">
+                <img class="wheat blue" src="./img/wheat_blue.png" style="width: 60%; margin: 10px 0;">
             </div>
         </div>
 
         <div class="row spacer">
             <div clas="col-md-6 col-md-offset-3">
                 <h2 class='crop-title' style="text-align: center;"></h2>
-                <p style="text-align: center;">Measured in billion</p>
+                <p style="text-align: center;">Measured in billions</p>
             </div>
         </div>
 
@@ -124,251 +141,345 @@
             Source: U.S. Department of Agriculture's Foreign Agricultural Service and the World Trade Organization
         </div>
 
-      <hr>
+        <hr>
 
-      <footer>
-        <p>Graphics & Design by Acton H. Gorton</p>
-        <p>&copy; 2015, <a href="http://www.investigatemidwest.org">Midwest Center for Investigative Reporting</a></p>
-      </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <footer>
+            <p>Graphics & Design by Acton H. Gorton</p>
+            <p>&copy; 2015, <a href="http://www.investigatemidwest.org">Midwest Center for Investigative Reporting</a></p>
+        </footer>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
 
-        <script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+    </script>
 
-        <!-- d3, graphs, and map -->
-        <script>
-                var data; // a global
-                var largest;
-                var lines;
-                var svgContainer;
-                var margin = {top: 40, right: 40, bottom: 40, left: 50};
-                var width = 150;
-                var height = 150;
+    <!-- d3, graphs, and map -->
+    <script>
+        $( document ).ready(function() {
+            var data; // a global
+            var largest;
+            var lines;
+            var svgContainer;
+            var margin = {top: 40, right: 40, bottom: 40, left: 50};
+            var width = 150;
+            var height = 150;
 
-                var mindate = new Date(2009, 0, 1);
-                var maxdate = new Date(2015, 4, 31);
+            var mindate = new Date(2009, 0, 1);
+            var maxdate = new Date(2015, 4, 31);
 
-                var x;
-                var xAxis;
+            var x;
+            var xAxis;
 
-                var y;
-                var yAxis;
+            var y;
+            var yAxis;
 
-                var crops = ['beef', 'corn', 'dairy', 'eggs', 'pork', 'poultry', 'rice', 'soy', 'sugar', 'tobacco', 'wheat'];
+            var crops = ['beef', 'corn', 'dairy', 'eggs', 'pork', 'poultry', 'rice', 'soy', 'sugar', 'tobacco', 'wheat'];
 
-                // load json and assign to global
-                d3.json("./data.json", function (error, json) {
-                    if (error) return console.warn(error);
-                    data = json;
-                });
-
-                function load_data(crop) {
-
-                    $('.crop-title').html(data[crop][0]);
-
-                    // convert to integers and find largest number
-                    largest = 0;
-                    for (i in data[crop]) {
-                        if (i != 0) {
-                            var cc = 1;
-                            while (cc < data[crop][1].length) {
-
-                                // check if variable is string or integer, and then convert
-                                if (isNaN(data[crop][i][cc]) == true) {
-                                    data[crop][i][cc] = parseInt(data[crop][i][cc].replace(/,/g, ''));
-                                }
-
-                                // find the largest number and use for plotting
-                                if (data[crop][i][cc] > largest) {
-                                    largest = data[crop][i][cc];
-                                }
-                                cc++
-                            }
-                        }
-                    }
-
-                    var x = d3.time.scale().domain([mindate, maxdate]).range([0, 120]);
-                    var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
-
-                    var y = d3.scale.linear().domain([(largest / 1000000000), 0]).range([0, 120]);
-                    var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5);
-
-                    var counter = 1;
-                    var i = 1;
-
-                    while (i < data[crop].length) {
-
-                        // create lines
-                        lines = [
-                            {"x": 0, "y": get_value(data[crop][i][1])},
-                            {"x": 20, "y": get_value(data[crop][i][2])},
-                            {"x": 40, "y": get_value(data[crop][i][3])},
-                            {"x": 60, "y": get_value(data[crop][i][4])},
-                            {"x": 80, "y": get_value(data[crop][i][5])},
-                            {"x": 100, "y": get_value(data[crop][i][6])}
-                        ];
-
-                        // select graph div
-                        var svg = d3.select("#graph-" + counter)
-                                .append("svg")
-                                .attr('class', 'graph')
-                                .attr("width", width + margin.left + margin.right)
-                                .attr("height", height + margin.top + margin.bottom)
-                                .append("g")
-                                .attr("transform", "translate(20, 20)");
-
-                        // add graph label
-                        svg.append("text")
-                                .text(data[crop][i][0])
-                                .attr('font-weight', 'bold')
-                                .attr("transform", "translate(60, 0)");
-
-                        // x axis positioning
-                        svg.append("g")
-                                .attr("class", "x axis")
-                                .attr("transform", "translate(30, 150)")
-                                .call(xAxis)
-                                .selectAll("text")
-                                .style("text-anchor", "end")
-                                .attr("dx", "-.7em")
-                                .attr("dy", ".1em")
-                                .attr("transform", "rotate(-60)");
-
-                        // y axis positioning
-                        svg.append("g")
-                                .attr("class", "y axis")
-                                .attr("transform", "translate(20, 20)")
-                                .call(yAxis);
-
-                        // line
-                        svg.append("path")
-                                .attr("d", lineFunction(lines))
-                                .attr("transform", "translate(30, -10)")
-                                .attr("stroke", "steelblue")
-                                .attr("stroke-width", 2)
-                                .attr("fill", "none");
-
-                        // advance counter
-                        counter++;
-                        i++;
-                    }
-                }
-
-                // parse number for graph
-                function get_value(xx) {
-                    var ttt = (xx / largest) * 100;
-                    var test = isFinite(ttt);
-                    if (test == false) {
-                        ttt = 0
-                    }
-                    return ttt
-                }
-
-                // This is the accessor function we talked about above
-                var lineFunction = d3.svg.line()
-                        .x(function (d) {
-                            return d.x * 1.15;
-                        })
-                        .y(function (d) {
-                            return height - d.y;
-                        })
-                        .interpolate("linear");
-
-
-                // ##############
-                //      MAP
-                // ##############
-                var map = new Datamap({
-                    element: document.getElementById("mapbox"),
-                    responsive: true,
-                    projection: 'mercator',
-                    fills: {
-                        defaultFill: "steelblue",
-                        win: '#0fa0fa'
-                    },
-                    data: {
-                        'TX': {fillKey: 'win'},
-                        'FL': {fillKey: 'win'},
-                        'NC': {fillKey: 'win'},
-                        'CA': {fillKey: 'win'},
-                        'NY': {fillKey: 'win'},
-                        'CO': {fillKey: 'win'}
-                    }
-                });
-
-                map.arc([
-                    {
-                        origin: {
-                            latitude: 40.639722,
-                            longitude: -73.778889
-                        },
-                        destination: {
-                            latitude: 37.618889,
-                            longitude: -122.375
-                        }
-                    },
-                    {
-                        origin: {
-                            latitude: 30.194444,
-                            longitude: -97.67
-                        },
-                        destination: {
-                            latitude: 25.793333,
-                            longitude: -80.290556
-                        },
-                        options: {
-                            strokeWidth: 2,
-                            strokeColor: 'rgba(100, 10, 200, 0.4)',
-                            greatArc: true
-                        }
-                    },
-                    {
-                        origin: {
-                            latitude: 39.861667,
-                            longitude: -104.673056
-                        },
-                        destination: {
-                            latitude: 35.877778,
-                            longitude: -78.7875
-                        }
-                    }
-                ], {strokeWidth: 1, arcSharpness: 1.4});
-
-                // listen for window resize
-                d3.select(window).on('resize', function () {
-                    map.resize();
-                });
-
-                // ####
-                // Jquery events
-                // ####
-                $('.data').hover(function () {
-                    $(this).css("background-color", "blue");
-                    $('.graph').remove();
-
-                    var choice = $(this).attr('class').split(' ')[1];
-                    load_data(crops.indexOf(choice));
-
-                }, function () {
-                    $(this).css("background-color", "white");
-                });
-
-            window.onload = function () {
-                // load first small multiple
+            // load json and assign to global
+            d3.json("./data.json", function (error, json) {
+                if (error) return console.warn(error);
+                data = json;
                 load_data(1);
+            });
+
+            function load_data(crop) {
+
+                $('.crop-title').html(data[crop][0]);
+
+                // convert to integers and find largest number
+                largest = 0;
+                for (i in data[crop]) {
+                    if (i != 0) {
+                        var cc = 1;
+                        while (cc < data[crop][1].length) {
+
+                            // check if variable is string or integer, and then convert
+                            if (isNaN(data[crop][i][cc]) == true) {
+                                data[crop][i][cc] = parseInt(data[crop][i][cc].replace(/,/g, ''));
+                            }
+
+                            // find the largest number and use for plotting
+                            if (data[crop][i][cc] > largest) {
+                                largest = data[crop][i][cc];
+                            }
+                            cc++
+                        }
+                    }
+                }
+
+                var x = d3.time.scale().domain([mindate, maxdate]).range([0, 120]);
+                var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
+
+                var y = d3.scale.linear().domain([(largest / 1000000000), 0]).range([0, 120]);
+                var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5);
+
+                var counter = 1;
+                var i = 1;
+
+                while (i < data[crop].length) {
+
+                    // create lines
+                    lines = [
+                        {"x": 0, "y": get_value(data[crop][i][1])},
+                        {"x": 20, "y": get_value(data[crop][i][2])},
+                        {"x": 40, "y": get_value(data[crop][i][3])},
+                        {"x": 60, "y": get_value(data[crop][i][4])},
+                        {"x": 80, "y": get_value(data[crop][i][5])},
+                        {"x": 100, "y": get_value(data[crop][i][6])}
+                    ];
+
+                    // select graph div
+                    var svg = d3.select("#graph-" + counter)
+                            .append("svg")
+                            .attr('class', 'graph')
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform", "translate(20, 20)");
+
+                    // add graph label
+                    svg.append("text")
+                            .text(data[crop][i][0])
+                            .attr('font-weight', 'bold')
+                            .attr("transform", "translate(60, 0)");
+
+                    // x axis positioning
+                    svg.append("g")
+                            .attr("class", "x axis")
+                            .attr("transform", "translate(30, 150)")
+                            .call(xAxis)
+                            .selectAll("text")
+                            .style("text-anchor", "end")
+                            .attr("dx", "-.7em")
+                            .attr("dy", ".1em")
+                            .attr("transform", "rotate(-60)");
+
+                    // y axis positioning
+                    svg.append("g")
+                            .attr("class", "y axis")
+                            .attr("transform", "translate(20, 20)")
+                            .call(yAxis);
+
+                    // line
+                    svg.append("path")
+                            .attr("d", lineFunction(lines))
+                            .attr("transform", "translate(30, -10)")
+                            .attr("stroke", "steelblue")
+                            .attr("stroke-width", 2)
+                            .attr("fill", "none");
+
+                    // advance counter
+                    counter++;
+                    i++;
+                }
             }
-        </script>
+
+            // parse number for graph
+            function get_value(xx) {
+                var ttt = (xx / largest) * 100;
+                var test = isFinite(ttt);
+                if (test == false) {
+                    ttt = 0
+                }
+                return ttt
+            }
+
+            // This is the accessor function we talked about above
+            var lineFunction = d3.svg.line()
+                    .x(function (d) {
+                        return d.x * 1.15;
+                    })
+                    .y(function (d) {
+                        return height - d.y;
+                    })
+                    .interpolate("linear");
+
+
+            // ##############
+            //      MAP
+            // ##############
+            var map = new Datamap({
+                element: document.getElementById("mapbox"),
+                geographyConfig: {
+                    highlightOnHover: true,
+                    popupOnHover: true,
+                },
+                responsive: true,
+                projection: 'mercator',
+                fills: {
+                    defaultFill: "#444444",
+                    dest: 'steelblue'
+                },
+                data: {
+                    'USA': {fillKey: 'dest', "label": true},
+                    'MEX': {fillKey: 'dest', "label": true},
+                    'JPN': {fillKey: 'dest', "label": true},
+                    'CAN': {fillKey: 'dest', "label": true},
+                    'VNM': {fillKey: 'dest', "label": true},
+                    'PER': {fillKey: 'dest', "label": true},
+                    'MYS': {fillKey: 'dest', "label": true},
+                    'CHL': {fillKey: 'dest', "label": true},
+                    'AUS': {fillKey: 'dest', "label": true},
+                    'SGP': {fillKey: 'dest', "label": true},
+                    'NZL': {fillKey: 'dest', "label": true},
+                    'BRN': {fillKey: 'dest', "label": true}
+                }
+            });
+
+            map.arc([
+                { // Mexico City, Mexico
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: 19.405415,
+                        longitude: -99.142282
+                    }
+                },
+                { // Tokyo, Japan
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: 35.731566,
+                        longitude: 139.730952
+                    }
+                },
+                { // Ottawa, Canada
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: 45.423514,
+                        longitude: -75.712486
+                    }
+                },
+                { // Hanoi, Vietnam
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: 21.025978,
+                        longitude: 105.836448
+                    }
+                },
+                { // Lima, Peru
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: -12.046696,
+                        longitude: -77.042096
+                    }
+                },
+                { // Kuala Lumpur, Malaysia
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: 3.139343,
+                        longitude: 101.684450
+                    }
+                },
+                { // Santiago, Chile
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: -33.450705,
+                        longitude: -70.658697
+                    }
+                },
+                { // Canberra, Australia
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: -35.281921,
+                        longitude: 149.128891
+                    }
+                },
+                { // Pulau Ujong, Singapore
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: 1.361720,
+                        longitude: 103.809427
+                    }
+                },
+                { // Wellington, New Zealand
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: -41.286607,
+                        longitude: 174.776268
+                    }
+                },
+                { // Bandar Seri Begawan, Brunei
+                    origin: {
+                        latitude: 38.906479,
+                        longitude: -77.032085
+                    },
+                    destination: {
+                        latitude: 4.900562,
+                        longitude: 114.937890
+                    }
+                }
+            ],
+                    {
+                        strokeWidth: 3,
+                        arcSharpness: 1,
+                        strokeColor: '#DD1C77',
+                        animationSpeed: 4000
+                    }
+            );
+
+
+            // listen for window resize
+            d3.select(window).on('resize', function () {
+                map.resize();
+            });
+
+            // ####
+            // Jquery events
+            // ####
+            $('.data').mouseenter(function () {
+                // change icon colors with mouse movement
+                $(this).parent().find('.black').css('display', 'block');
+                $(this).parent().find('.blue').css('display', 'none');
+                $(this).children('.black').css('display', 'none');
+                $(this).children('.blue').css('display', 'block');
+
+                // reset graphs, find class attribute and use it as an array index to select data to load
+                $('.graph').remove();
+                var choice = $(this).find('.black').attr('class').split(' ')[0];
+                load_data(crops.indexOf(choice));
+            })
+        })
+    </script>
     </body>
 </html>
