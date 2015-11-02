@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>U.S. agricultural exports to Trans-Pacific Partnership countries</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -55,61 +55,81 @@
     <div class="jumbotron" style="margin-bottom: 0;">
         <div class="container">
             <h1>Midwest Center for Investigative Reporting</h1>
+            <h2>U.S. agricultural exports to Trans-Pacific Partnership countries</h2>
         </div>
     </div>
-
+    <!-- map graphic -->
     <div class="container">
         <div class="row">
                 <div id="mapbox"></div>
         </div>
     </div>
 
+     <div class="container spacer">
+         <div class="row">
+             <div class="col-md-6">
+                 <p>The Trans-Pacific Partnership is the largest free trade agreement that the United States has been a part of since the North American Free Trade Agreement in the 1990s.</p>
+                 <p>The 12 countries included in the deal include the United States, Canada, Mexico, Chile, Peru, Japan, Vietnam, Singapore, Malaysia, Brunei, Australia and New Zealand.</p>
+                 <p>Negotiations concluded Oct. 5 in Atlanta, and some trade experts believe they set up the U.S. agriculture industry to be the deal’s biggest winner.</p>
+             </div>
+             <div class="col-md-6">
+                 <p>U.S. Department of Agriculture Data show that the U.S. food and agricultural exports reached a record $150 billion in 2014. Nations included in the Trans-Pacific Partnership deal accounted for a combined 42 percent of that total.</p>
+                 <p>The graphics below show how much key U.S. agricultural exports have gone to TPP countries from January 2010 through August 2015.</p>
+                 <p>Specific exports include wheat and wheat products, beef, corn and corn products, dairy, sugar and sugar products, eggs, pork, soybeans and soybean products, poultry, rice and rice products, and tobacco.</p>
+             </div>
+         </div>
+     </div>
+
     <div class="container">
+        <!-- instructions -->
+        <div class="row spacer">
+            <p style="font-weight: bold;">Touch each icon to learn more about that product:</p>
+        </div>
         <!-- Icons -->
         <div class="row spacer">
             <div class="data col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1">
-                <img class="beef black" src="./img/beef.png" style="width: 60%; margin: 10px 0; display: none;">
-                <img class="beef blue" src="./img/beef_blue.png" style="width: 60%; margin: 10px 0; display: block;">
+                <img class="beef black" src="./img/beef.png" title="Beef" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0; display: none;">
+                <img class="beef blue" src="./img/beef_blue.png" title="Beef" data-toggle="tooltip" data-placement="bottom"  style="width: 60%; margin: 10px 0; display: block;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="corn black" src="./img/corn.png" style="width: 60%; margin: 10px 0;">
-                <img class="corn blue" src="./img/corn_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="corn black" src="./img/corn.png" title="Corn" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="corn blue" src="./img/corn_blue.png" title="Corn" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="dairy black" src="./img/dairy.png" style="width: 60%; margin: 10px 0;">
-                <img class="dairy blue" src="./img/dairy_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="dairy black" src="./img/dairy.png" title="Dairy" data-toggle="tooltip" data-placement="bottom"style="width: 60%; margin: 10px 0;">
+                <img class="dairy blue" src="./img/dairy_blue.png" title="Dairy" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="eggs black" src="./img/eggs.png" style="width: 60%; margin: 10px 0;">
-                <img class="eggs blue" src="./img/eggs_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="eggs black" src="./img/eggs.png" title="Eggs" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="eggs blue" src="./img/eggs_blue.png" title="Eggs" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="pork black" src="./img/pork.png" style="width: 60%; margin: 10px 0;">
-                <img class="pork blue" src="./img/pork_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="pork black" src="./img/pork.png" title="Pork" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="pork blue" src="./img/pork_blue.png" title="Pork" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="poultry black" src="./img/poultry.png" style="width: 60%; margin: 10px 0;">
-                <img class="poultry blue" src="./img/poultry_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="poultry black" src="./img/poultry.png" title="Poultry" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="poultry blue" src="./img/poultry_blue.png" title="Poultry" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="rice black" src="./img/rice.png" style="width: 60%; margin: 10px 0;">
-                <img class="rice blue" src="./img/rice_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="rice black" src="./img/rice.png" title="Rice" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="rice blue" src="./img/rice_blue.png" title="Rice" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="soy black" src="./img/soy.png" style="width: 60%; margin: 10px 0;">
-                <img class="soy blue" src="./img/soy_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="soy black" src="./img/soy.png" title="Soy" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="soy blue" src="./img/soy_blue.png" title="Soy" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="sugar black" src="./img/sugar.png" style="width: 60%; margin: 10px 0;">
-                <img class="sugar blue" src="./img/sugar_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="sugar black" src="./img/sugar.png" title="Sugar" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="sugar blue" src="./img/sugar_blue.png" title="Sugar" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="tobacco black" src="./img/tobacco.png" style="width: 60%; margin: 10px 0;">
-                <img class="tobacco blue" src="./img/tobacco_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="tobacco black" src="./img/tobacco.png" title="Tobacco" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="tobacco blue" src="./img/tobacco_blue.png" title="Tobacco" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
             <div class="data col-xs-2 col-xs-offset-0 col-sm-2 col-md-1 col-lg-1 col-lg-offset-0">
-                <img class="wheat black" src="./img/wheat.png" style="width: 60%; margin: 10px 0;">
-                <img class="wheat blue" src="./img/wheat_blue.png" style="width: 60%; margin: 10px 0;">
+                <img class="wheat black" src="./img/wheat.png" title="Wheat" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
+                <img class="wheat blue" src="./img/wheat_blue.png" title="Wheat" data-toggle="tooltip" data-placement="bottom" style="width: 60%; margin: 10px 0;">
             </div>
         </div>
 
@@ -136,9 +156,21 @@
             <div id="graph-12" class="col-xs-4 col-xs-offset-1 col-sm-3 col-sm-offset-0 col-md-offset-1 col-md-2 col-lg-2 col-lg-offset-1"></div>
         </div>
 
-        <!-- Stuff -->
+        <!-- Credits-->
         <div class="row spacer">
-            Source: U.S. Department of Agriculture's Foreign Agricultural Service and the World Trade Organization
+            <div class="col-md-12">
+                <h3>Related Stories</h3>
+                <p><a href="#">Trans-Pacific Partnership seeks to bring trade stability to major markets</a></p>
+                <p><a href="#">U.S. agribusiness sees value in historic trade deal</a></p>
+                <p><a href="#">Controversial trade agreement creates corporate dispute system, GMO working group</a></p>
+            </div>
+        </div>
+        <div class="row spacer">
+            <div class="col-md-12">
+                <h3>Data Source</h3>
+                <p>Source: <a target="_blank" href="http://apps.fas.usda.gov/gats/default.aspx">U.S. Department of Agriculture's Foreign Agricultural Service and the World Trade Organization</a></p>
+                <p><a href="Export_Data_WTO.xls" alt="download data" title="download">Download the data in Excel format</a></p>
+            </div>
         </div>
 
         <hr>
@@ -314,7 +346,7 @@
                 element: document.getElementById("mapbox"),
                 geographyConfig: {
                     highlightOnHover: true,
-                    popupOnHover: true,
+                    popupOnHover: true
                 },
                 responsive: true,
                 projection: 'mercator',
@@ -478,7 +510,11 @@
                 $('.graph').remove();
                 var choice = $(this).find('.black').attr('class').split(' ')[0];
                 load_data(crops.indexOf(choice));
-            })
+            });
+
+            // Select all elements with data-toggle="tooltips" in the document
+            $('[data-toggle="tooltip"]').tooltip();
+
         })
     </script>
     </body>
