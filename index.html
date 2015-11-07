@@ -225,8 +225,8 @@
         var width = 150;
         var height = 150;
 
-        var mindate = new Date(2009, 0, 1);
-        var maxdate = new Date(2015, 4, 31);
+        var mindate = new Date(2010, 0, 1);
+        var maxdate = new Date(2014, 12, 31);
 
         var x;
         var xAxis;
@@ -242,13 +242,12 @@
             d3.json("./data.json", function (error, json) {
                 if (error) return console.warn(error);
                 data = json;
-                load_data(1);
+                load_data(0);
             });
 
             function load_data(crop) {
 
                 $('.crop-title').html(data[0][crop][0]);
-
 
                 // convert to integers and find largest number
                 largest = 0;
@@ -274,10 +273,10 @@
                 }
 
 
-                var x = d3.time.scale().domain([mindate, maxdate]).range([0, 120]);
-                var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
+                var x = d3.time.scale().domain([mindate, maxdate]).range([0, 125]);
+                var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(10);
 
-                var y = d3.scale.linear().domain([(largest / 1000000000), 0]).range([0, 120]);
+                var y = d3.scale.linear().domain([(largest / 1000000000), 0]).range([0, 130]);
                 var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5);
 
                 var counter = 1;
@@ -288,25 +287,28 @@
                     // create lines
                     export_lines = [
                         {"x": 0,   "y": get_value(data[0][crop][i][1])},
-                        {"x": 20,  "y": get_value(data[0][crop][i][2])},
-                        {"x": 40,  "y": get_value(data[0][crop][i][3])},
-                        {"x": 60,  "y": get_value(data[0][crop][i][4])},
-                        {"x": 80,  "y": get_value(data[0][crop][i][5])},
-                        {"x": 100, "y": get_value(data[0][crop][i][6])}
+                        {"x": 25,  "y": get_value(data[0][crop][i][2])},
+                        {"x": 50,  "y": get_value(data[0][crop][i][3])},
+                        {"x": 75,  "y": get_value(data[0][crop][i][4])},
+                        {"x": 100, "y": get_value(data[0][crop][i][5])},
+                        {"x": 125, "y": get_value(data[0][crop][i][6])}
                     ];
 
-                    if (data[0][crop][1][0] == data[1][crop][1][0] && data[1][crop][i] != null){
-                        import_lines = [
-                            {"x": 0,   "y": get_value(data[1][crop][i][1])},
-                            {"x": 20,  "y": get_value(data[1][crop][i][2])},
-                            {"x": 40,  "y": get_value(data[1][crop][i][3])},
-                            {"x": 60,  "y": get_value(data[1][crop][i][4])},
-                            {"x": 80,  "y": get_value(data[1][crop][i][5])},
-                            {"x": 100, "y": get_value(data[1][crop][i][6])}
-                        ];
-                    }
-                    else {
-                        import_lines = null;
+                    for (cxc in data[1][crop]){
+                        if (data[1][crop][cxc][0] == data[0][crop][i][0]){
+                            import_lines = [
+                                {"x": 0,   "y": get_value(data[1][crop][cxc][1])},
+                                {"x": 25,  "y": get_value(data[1][crop][cxc][2])},
+                                {"x": 50,  "y": get_value(data[1][crop][cxc][3])},
+                                {"x": 75,  "y": get_value(data[1][crop][cxc][4])},
+                                {"x": 100, "y": get_value(data[1][crop][cxc][5])},
+                                {"x": 125, "y": get_value(data[1][crop][cxc][6])}
+                            ];
+                            break;
+                        }
+                        else {
+                            import_lines = null;
+                        }
                     }
 
                     // select graph div
@@ -338,13 +340,13 @@
                     // y axis positioning
                     svg.append("g")
                             .attr("class", "y axis")
-                            .attr("transform", "translate(20, 20)")
+                            .attr("transform", "translate(25, 15)")
                             .call(yAxis);
 
                     // export lines
                     svg.append("path")
                             .attr("d", lineFunction(export_lines))
-                            .attr("transform", "translate(30, -10)")
+                            .attr("transform", "translate(30, -5)")
                             .attr("stroke", "steelblue")
                             .attr("stroke-width", 2)
                             .attr("fill", "none");
@@ -353,7 +355,7 @@
                     if (import_lines != null){
                         svg.append("path")
                                 .attr("d", lineFunction(import_lines))
-                                .attr("transform", "translate(30, -10)")
+                                .attr("transform", "translate(30, -5)")
                                 .attr("stroke", "red")
                                 .attr("stroke-width", 2)
                                 .attr("fill", "none");
@@ -367,7 +369,7 @@
 
             // parse number for graph
             function get_value(xx) {
-                var ttt = (xx / largest) * 100;
+                var ttt = (xx / largest) * 130;
                 var test = isFinite(ttt);
                 if (test == false) {
                     ttt = 0
@@ -378,13 +380,12 @@
             // assessor function
             var lineFunction = d3.svg.line()
                     .x(function (d) {
-                        return d.x * 1.15;
+                        return d.x;
                     })
                     .y(function (d) {
                         return height - d.y;
                     })
                     .interpolate("linear");
-
 
             // ##############
             //      MAP
