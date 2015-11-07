@@ -132,10 +132,28 @@
             </div>
         </div>
 
+        <!-- Graph title -->
         <div class="row spacer">
-            <div clas="col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3">
                 <h2 class='crop-title' style="text-align: center;"></h2>
                 <p style="text-align: center;">Measured in billions</p>
+            </div>
+        </div>
+
+        <!-- legend -->
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-3 col-sm-2 col-sm-offset-4 col-md-2 col-md-offset-4">
+                <svg width="80" height="20">
+                    <rect width="20" height="20" fill="steelblue"></rect>
+                    <text x="23" y="15" fill="black">Exports</text>
+                </svg>
+            </div>
+            <div class="col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1">
+                <svg width="80" height="20">
+                    <rect width="20" height="20" fill="red"></rect>
+                    <text x="23" y="15" fill="black">Imports</text>
+                </svg>
+
             </div>
         </div>
 
@@ -198,25 +216,27 @@
 
     <!-- d3, graphs, and map -->
     <script>
+        var data; // a global
+        var largest;
+        var export_lines;
+        var import_lines;
+        var svgContainer;
+        var margin = {top: 40, right: 40, bottom: 40, left: 50};
+        var width = 150;
+        var height = 150;
+
+        var mindate = new Date(2009, 0, 1);
+        var maxdate = new Date(2015, 4, 31);
+
+        var x;
+        var xAxis;
+
+        var y;
+        var yAxis;
+
+        var crops = ['beef', 'corn', 'dairy', 'eggs', 'pork', 'poultry', 'rice', 'soy', 'sugar', 'tobacco', 'wheat'];
+
         $( document ).ready(function() {
-            var data; // a global
-            var largest;
-            var lines;
-            var svgContainer;
-            var margin = {top: 40, right: 40, bottom: 40, left: 50};
-            var width = 150;
-            var height = 150;
-
-            var mindate = new Date(2009, 0, 1);
-            var maxdate = new Date(2015, 4, 31);
-
-            var x;
-            var xAxis;
-
-            var y;
-            var yAxis;
-
-            var crops = ['beef', 'corn', 'dairy', 'eggs', 'pork', 'poultry', 'rice', 'soy', 'sugar', 'tobacco', 'wheat'];
 
             // load json and assign to global
             d3.json("./data.json", function (error, json) {
@@ -227,28 +247,32 @@
 
             function load_data(crop) {
 
-                $('.crop-title').html(data[crop][0]);
+                $('.crop-title').html(data[0][crop][0]);
+
 
                 // convert to integers and find largest number
                 largest = 0;
-                for (i in data[crop]) {
-                    if (i != 0) {
-                        var cc = 1;
-                        while (cc < data[crop][1].length) {
+                for (xv in data){
+                    for (i in data[xv][crop]) {
+                        if (i != 0) {
+                            var cc = 1;
+                            while (cc < data[xv][crop][1].length) {
 
-                            // check if variable is string or integer, and then convert
-                            if (isNaN(data[crop][i][cc]) == true) {
-                                data[crop][i][cc] = parseInt(data[crop][i][cc].replace(/,/g, ''));
-                            }
+                                // check if variable is string or integer, and then convert
+                                if (isNaN(data[xv][crop][i][cc]) == true) {
+                                    data[xv][crop][i][cc] = parseInt(data[xv][crop][i][cc].replace(/,/g, ''));
+                                }
 
-                            // find the largest number and use for plotting
-                            if (data[crop][i][cc] > largest) {
-                                largest = data[crop][i][cc];
+                                // find the largest number and use for plotting
+                                if (data[xv][crop][i][cc] > largest) {
+                                    largest = data[xv][crop][i][cc];
+                                }
+                                cc++
                             }
-                            cc++
                         }
                     }
                 }
+
 
                 var x = d3.time.scale().domain([mindate, maxdate]).range([0, 120]);
                 var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(6);
@@ -259,17 +283,31 @@
                 var counter = 1;
                 var i = 1;
 
-                while (i < data[crop].length) {
+                while (i < data[0][crop].length) {
 
                     // create lines
-                    lines = [
-                        {"x": 0, "y": get_value(data[crop][i][1])},
-                        {"x": 20, "y": get_value(data[crop][i][2])},
-                        {"x": 40, "y": get_value(data[crop][i][3])},
-                        {"x": 60, "y": get_value(data[crop][i][4])},
-                        {"x": 80, "y": get_value(data[crop][i][5])},
-                        {"x": 100, "y": get_value(data[crop][i][6])}
+                    export_lines = [
+                        {"x": 0,   "y": get_value(data[0][crop][i][1])},
+                        {"x": 20,  "y": get_value(data[0][crop][i][2])},
+                        {"x": 40,  "y": get_value(data[0][crop][i][3])},
+                        {"x": 60,  "y": get_value(data[0][crop][i][4])},
+                        {"x": 80,  "y": get_value(data[0][crop][i][5])},
+                        {"x": 100, "y": get_value(data[0][crop][i][6])}
                     ];
+
+                    if (data[0][crop][1][0] == data[1][crop][1][0] && data[1][crop][i] != null){
+                        import_lines = [
+                            {"x": 0,   "y": get_value(data[1][crop][i][1])},
+                            {"x": 20,  "y": get_value(data[1][crop][i][2])},
+                            {"x": 40,  "y": get_value(data[1][crop][i][3])},
+                            {"x": 60,  "y": get_value(data[1][crop][i][4])},
+                            {"x": 80,  "y": get_value(data[1][crop][i][5])},
+                            {"x": 100, "y": get_value(data[1][crop][i][6])}
+                        ];
+                    }
+                    else {
+                        import_lines = null;
+                    }
 
                     // select graph div
                     var svg = d3.select("#graph-" + counter)
@@ -282,7 +320,7 @@
 
                     // add graph label
                     svg.append("text")
-                            .text(data[crop][i][0])
+                            .text(data[0][crop][i][0])
                             .attr('font-weight', 'bold')
                             .attr("transform", "translate(60, 0)");
 
@@ -303,13 +341,23 @@
                             .attr("transform", "translate(20, 20)")
                             .call(yAxis);
 
-                    // line
+                    // export lines
                     svg.append("path")
-                            .attr("d", lineFunction(lines))
+                            .attr("d", lineFunction(export_lines))
                             .attr("transform", "translate(30, -10)")
                             .attr("stroke", "steelblue")
                             .attr("stroke-width", 2)
                             .attr("fill", "none");
+
+                    // import lines
+                    if (import_lines != null){
+                        svg.append("path")
+                                .attr("d", lineFunction(import_lines))
+                                .attr("transform", "translate(30, -10)")
+                                .attr("stroke", "red")
+                                .attr("stroke-width", 2)
+                                .attr("fill", "none");
+                    }
 
                     // advance counter
                     counter++;
@@ -327,7 +375,7 @@
                 return ttt
             }
 
-            // This is the accessor function we talked about above
+            // assessor function
             var lineFunction = d3.svg.line()
                     .x(function (d) {
                         return d.x * 1.15;
